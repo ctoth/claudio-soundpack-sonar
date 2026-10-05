@@ -1,7 +1,7 @@
 {
   "name": "sonar",
-  "description": "The control room of a deep-sea submarine: dry blips and gauge ticks for the constant work, long echoing sonar pings for the moments that matter",
-  "version": "1.0.0",
+  "description": "The control room of a deep-sea submarine, built from real recordings: a struck singing bowl for the sonar ping, a hydrophone under the Svalbard ice, a ship's bell, Morse code and a WWII dive klaxon",
+  "version": "2.0.0",
   "mappings": {
     "completion/agent-complete.wav": "sounds/synth/ping-home.wav",
     "completion/completion.wav": "sounds/synth/ping-home.wav",

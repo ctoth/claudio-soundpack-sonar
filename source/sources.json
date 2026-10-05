@@ -1,0 +1,116 @@
+{
+  "sources": [
+    {
+      "file": "raw/commons/singing_bowl/The_sound_of_a_singing_bowl.wav",
+      "title": "The sound of a singing bowl",
+      "author": "Valera N. Trubin",
+      "source": "https://commons.wikimedia.org/wiki/File:The_sound_of_a_singing_bowl.wav",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+      "file": "raw/commons/foghorn/WWS_ShipSodekshipsbell.wav",
+      "title": "WWS ShipSodekshipsbell",
+      "author": "Work With Sounds / Museum of Municipal Engineering",
+      "source": "https://commons.wikimedia.org/wiki/File:WWS_ShipSodekshipsbell.ogg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+      "file": "raw/commons/hydrophone/Svalbard_Sample_for_Wiki.wav",
+      "title": "Svalbard Sample for Wiki",
+      "author": "Max Eastley",
+      "source": "https://commons.wikimedia.org/wiki/File:Svalbard_Sample_for_Wiki.ogg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Svalbard_Sample_for_Wiki.ogg"
+    },
+    {
+      "file": "raw/commons/submarine/WWII_submarine_dive_klaxon.wav",
+      "title": "WWII submarine dive klaxon",
+      "author": "United States Navy",
+      "source": "https://commons.wikimedia.org/wiki/File:WWII_submarine_dive_klaxon.ogg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:WWII_submarine_dive_klaxon.ogg"
+    },
+    {
+      "file": "raw/commons/morse_code/Morse_Code_Slash.wav",
+      "title": "Morse Code - Slash",
+      "author": "JoeDeRose",
+      "source": "https://commons.wikimedia.org/wiki/File:Morse_Code_-_Slash.ogg",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Morse_Code_-_Slash.ogg"
+    },
+    {
+      "file": "raw/commons/gong/Gong_or_bell_vibrant_short.wav",
+      "title": "Gong or bell vibrant (short)",
+      "author": "PDSounds (http://www.pdsounds.org/sounds/gong_or_bell_vibrant)",
+      "source": "https://commons.wikimedia.org/wiki/File:Gong_or_bell_vibrant_(short).ogg",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+      "file": "raw/kenney/interface-sounds/drop_002.wav",
+      "title": "drop_002",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/interface-sounds/drop_003.wav",
+      "title": "drop_003",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/interface-sounds/drop_004.wav",
+      "title": "drop_004",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/interface-sounds/bong_001.wav",
+      "title": "bong_001",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/interface-sounds/question_004.wav",
+      "title": "question_004",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/impact-sounds/impactMetal_medium_004.wav",
+      "title": "impactMetal_medium_004",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/rpg-audio/creak1.wav",
+      "title": "creak1",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/rpg-audio",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "file": "raw/kenney/sci-fi-sounds/engineCircular_002.wav",
+      "title": "engineCircular_002",
+      "author": "Kenney",
+      "source": "https://kenney.nl/assets/sci-fi-sounds",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  ]
+}
