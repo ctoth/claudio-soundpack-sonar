@@ -1,0 +1,36 @@
+name: audit
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      # Pinned to the commit that added `soundpack audit` and `soundpack
+      # master` (ctoth/claudio#98). Move to a release tag once one has them.
+      - name: Install claudio
+        run: go install claudio.click/cmd/claudio@762b28c222aab0ae0b5144e7786290f2e77652c2
+
+      - name: Validate mappings
+        run: claudio soundpack validate soundpack.json
+
+      - name: Audit sounds
+        run: claudio soundpack audit soundpack.json --strict
+
+      # The published pack must be exactly what the source builds.
+      - name: Rebuild from source
+        run: |
+          rm -rf sounds soundpack.json
+          claudio soundpack master source/soundpack.json --out .
+          git diff --exit-code -- soundpack.json sounds

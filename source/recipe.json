@@ -1,0 +1,570 @@
+{
+  "name": "sonar",
+  "description": "The control room of a deep-sea submarine: dry blips and gauge ticks for the constant work, long echoing sonar pings for the moments that matter",
+  "version": "1.0.0",
+  "sounds": {
+    "gauge-tick": {
+      "about": "one tiny dry depth-gauge tick on C5, no tail",
+      "layers": [
+        {"freq": "C5", "dur": 0.03, "attack": 0.002, "decay": 0.028, "sustain": 0, "release": 0.01},
+        {"freq": "C4", "dur": 0.03, "attack": 0.002, "decay": 0.028, "sustain": 0, "release": 0.01, "gain": -9},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+
+    "load-blip": {
+      "about": "one short dry blip on A4, the unresolved fifth",
+      "layers": [
+        {"freq": "A4", "harmonics": [1, 0.25, 0.08], "dur": 0.07, "attack": 0.004, "decay": 0.066, "sustain": 0, "release": 0.015},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 700, "lowpass": 2200, "gain": -14}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-hatch": {
+      "about": "one low dull thunk on D4, like a hatch dogged shut",
+      "layers": [
+        {"freq": "D4", "harmonics": [1, 0.3], "dur": 0.08, "attack": 0.003, "decay": 0.077, "sustain": 0, "release": 0.015},
+        {"freq": "A4", "freq_end": "D4", "dur": 0.02, "attack": 0.002, "decay": 0.018, "sustain": 0, "release": 0.005, "gain": -8},
+        {"wave": "noise", "dur": 0.012, "attack": 0.002, "release": 0.008, "lowpass": 900, "gain": -8}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2500}]
+    },
+    "load-bubble": {
+      "about": "one tiny bubble: a fast upward glide from C5 to C6",
+      "layers": [
+        {"freq": "C5", "freq_end": "C6", "dur": 0.045, "attack": 0.004, "release": 0.02},
+        {"freq": "C4", "freq_end": "C5", "dur": 0.045, "attack": 0.004, "release": 0.02, "gain": -10}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-sweep": {
+      "about": "a passive-sonar sweep: filtered noise and a tone both rising for a third of a second",
+      "layers": [
+        {"wave": "noise", "dur": 0.3, "attack": 0.05, "release": 0.08, "lowpass": 350, "lowpass_end": 2200, "highpass": 200, "q": 3},
+        {"freq": "D4", "freq_end": "A4", "dur": 0.3, "attack": 0.05, "release": 0.08, "gain": -16}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-ticks": {
+      "about": "two quick dry gauge ticks on F4",
+      "layers": [
+        {"notes": ["F4", "F4"], "step": 0.09, "dur": 0.035, "attack": 0.002, "decay": 0.033, "sustain": 0, "release": 0.01, "harmonics": [1, 0.3]},
+        {"wave": "noise", "notes": ["F4", "F4"], "step": 0.09, "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -10}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-contact": {
+      "about": "two hollow contact tones rising a fifth, D4 then A4, left open",
+      "layers": [
+        {"wave": "pulse", "width": 0.5, "notes": ["D4", "A4"], "step": 0.1, "dur": 0.07, "attack": 0.004, "decay": 0.066, "sustain": 0, "release": 0.02, "lowpass": 1400},
+        {"notes": ["D5", "A5"], "step": 0.1, "dur": 0.04, "attack": 0.004, "decay": 0.036, "sustain": 0, "release": 0.01, "gain": -16}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-commit": {
+      "about": "three weighted hollow contact tones climbing D4 F4 A4, the first landing on a low hull thud",
+      "layers": [
+        {"wave": "pulse", "width": 0.5, "notes": ["D4", "F4", "A4"], "step": 0.11, "dur": 0.09, "attack": 0.004, "decay": 0.086, "sustain": 0, "release": 0.03, "lowpass": 1400},
+        {"freq": "D3", "harmonics": [1, 0.5, 0.25], "dur": 0.09, "attack": 0.004, "decay": 0.086, "sustain": 0, "release": 0.02, "gain": -9}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-ping-out": {
+      "about": "an outgoing ping on F5 sagging in pitch as it leaves, with one darker echo",
+      "layers": [
+        {"freq": "F5", "freq_end": "E5", "harmonics": [1, 0.2, 0.06], "dur": 0.3, "attack": 0.004, "decay": 0.296, "sustain": 0, "release": 0.03},
+        {"freq": "E5", "at": 0.3, "dur": 0.3, "attack": 0.01, "decay": 0.29, "sustain": 0, "release": 0.03, "gain": -12},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -16}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-hail": {
+      "about": "one G4 hail blip and its single quieter echo",
+      "layers": [
+        {"freq": "G4", "harmonics": [1, 0.3, 0.1], "dur": 0.08, "attack": 0.004, "decay": 0.076, "sustain": 0, "release": 0.02},
+        {"freq": "G4", "at": 0.17, "dur": 0.08, "attack": 0.006, "decay": 0.074, "sustain": 0, "release": 0.02, "gain": -11}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-turbine": {
+      "about": "a turbine spinning up: a low fluttering tone gliding from D3 to D4 and brightening",
+      "layers": [
+        {"wave": "pulse", "width": 0.3, "freq": "D3", "freq_end": "D4", "dur": 0.5, "attack": 0.08, "release": 0.1, "lowpass": 400, "lowpass_end": 1600, "tremolo": {"rate": 22, "depth": 0.5}, "voices": 2, "detune": 10},
+        {"wave": "noise", "dur": 0.5, "attack": 0.15, "release": 0.1, "lowpass": 500, "lowpass_end": 1800, "gain": -14}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3000}]
+    },
+    "load-probe": {
+      "about": "a probe launched: a tone gliding up from D4 to A4 followed by two small bubbles",
+      "layers": [
+        {"freq": "D4", "freq_end": "A4", "harmonics": [1, 0.3, 0.1], "dur": 0.2, "attack": 0.01, "release": 0.05},
+        {"wave": "noise", "dur": 0.12, "attack": 0.01, "release": 0.08, "highpass": 400, "lowpass": 1500, "gain": -12},
+        {"freq": "A4", "freq_end": "A5", "at": 0.3, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -6},
+        {"freq": "C5", "freq_end": "C6", "at": 0.4, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -9}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "load-chart": {
+      "about": "two soft pings, D5 then G5, a suspended fourth left hanging; the G5 echoes once",
+      "layers": [
+        {"freq": "D5", "harmonics": [1, 0.2, 0.06], "dur": 0.3, "attack": 0.004, "decay": 0.296, "sustain": 0, "release": 0.03},
+        {"freq": "G5", "harmonics": [1, 0.2, 0.06], "at": 0.25, "dur": 0.4, "attack": 0.004, "decay": 0.396, "sustain": 0, "release": 0.03},
+        {"freq": "G5", "at": 0.55, "dur": 0.25, "attack": 0.01, "decay": 0.24, "sustain": 0, "release": 0.03, "gain": -13}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+
+    "ok-blip": {
+      "about": "one short chirp gliding up a fourth from A4 to D5",
+      "layers": [
+        {"freq": "A4", "freq_end": "D5", "harmonics": [1, 0.25, 0.08], "dur": 0.08, "attack": 0.006, "release": 0.03},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 700, "lowpass": 2200, "gain": -14}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-hatch": {
+      "about": "one clean dry blip on D5 with its octave, the root answering the hatch thunk",
+      "layers": [
+        {"freq": "D5", "harmonics": [1, 0.25, 0.08], "dur": 0.09, "attack": 0.004, "decay": 0.086, "sustain": 0, "release": 0.02},
+        {"freq": "D6", "dur": 0.05, "attack": 0.004, "decay": 0.046, "sustain": 0, "release": 0.01, "gain": -14},
+        {"wave": "noise", "dur": 0.008, "attack": 0.002, "release": 0.006, "lowpass": 1200, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-bubbles": {
+      "about": "two tiny bubbles, the second higher than the first",
+      "layers": [
+        {"freq": "A4", "freq_end": "A5", "dur": 0.04, "attack": 0.004, "release": 0.02},
+        {"freq": "D5", "freq_end": "D6", "at": 0.085, "dur": 0.04, "attack": 0.004, "release": 0.02},
+        {"freq": "D4", "freq_end": "D5", "at": 0.085, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -10}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-lock": {
+      "about": "a contact locked: three quick blips, A5 A5 then up to D6",
+      "layers": [
+        {"notes": ["A5", "A5", "D6"], "step": 0.085, "dur": 0.05, "attack": 0.004, "decay": 0.046, "sustain": 0, "release": 0.02, "harmonics": [1, 0.15]},
+        {"notes": ["A4", "A4", "D5"], "step": 0.085, "dur": 0.05, "attack": 0.004, "decay": 0.046, "sustain": 0, "release": 0.02, "gain": -8}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-logged": {
+      "about": "a gauge tick on F4 then a blip on D5: the entry is logged",
+      "layers": [
+        {"freq": "F4", "harmonics": [1, 0.3], "dur": 0.035, "attack": 0.002, "decay": 0.033, "sustain": 0, "release": 0.01, "gain": -3},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -12},
+        {"freq": "D5", "harmonics": [1, 0.25, 0.08], "at": 0.08, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.02},
+        {"freq": "A5", "at": 0.08, "dur": 0.06, "attack": 0.004, "decay": 0.056, "sustain": 0, "release": 0.01, "gain": -15}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-contact": {
+      "about": "two hollow contact tones, A4 then up to D5, closing the open fifth on the root",
+      "layers": [
+        {"wave": "pulse", "width": 0.5, "notes": ["A4", "D5"], "step": 0.1, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.03, "lowpass": 1600},
+        {"notes": ["A5", "D6"], "step": 0.1, "dur": 0.05, "attack": 0.004, "decay": 0.046, "sustain": 0, "release": 0.01, "gain": -16}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-commit": {
+      "about": "two hollow contact tones F4 A4 landing on a soft D5 ping, which echoes once",
+      "layers": [
+        {"wave": "pulse", "width": 0.5, "notes": ["F4", "A4"], "step": 0.11, "dur": 0.09, "attack": 0.004, "decay": 0.086, "sustain": 0, "release": 0.03, "lowpass": 1400},
+        {"freq": "D5", "harmonics": [1, 0.2, 0.06], "at": 0.22, "dur": 0.35, "attack": 0.004, "decay": 0.346, "sustain": 0, "release": 0.03},
+        {"freq": "D4", "at": 0.22, "dur": 0.3, "attack": 0.004, "decay": 0.296, "sustain": 0, "release": 0.03, "gain": -9},
+        {"freq": "D5", "at": 0.58, "dur": 0.3, "attack": 0.01, "decay": 0.29, "sustain": 0, "release": 0.03, "gain": -10}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-ping-back": {
+      "about": "the ping answered: F5 then up to A5, the A5 ringing with one echo",
+      "layers": [
+        {"freq": "F5", "harmonics": [1, 0.2, 0.06], "dur": 0.2, "attack": 0.004, "decay": 0.196, "sustain": 0, "release": 0.03},
+        {"freq": "A5", "harmonics": [1, 0.2, 0.06], "at": 0.17, "dur": 0.4, "attack": 0.004, "decay": 0.396, "sustain": 0, "release": 0.03},
+        {"freq": "A5", "at": 0.52, "dur": 0.3, "attack": 0.01, "decay": 0.29, "sustain": 0, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-hail": {
+      "about": "the hail answered: G4 then D5 quickly, and the pair echoed once more quietly",
+      "layers": [
+        {"notes": ["G4", "D5"], "step": 0.09, "dur": 0.08, "attack": 0.004, "decay": 0.076, "sustain": 0, "release": 0.02, "harmonics": [1, 0.3, 0.1]},
+        {"notes": ["G4", "D5"], "step": 0.09, "at": 0.24, "dur": 0.08, "attack": 0.006, "decay": 0.074, "sustain": 0, "release": 0.02, "harmonics": [1, 0.3, 0.1], "gain": -11}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-turbine": {
+      "about": "the turbine at speed: a short steady flutter on D4, then two bright blips D5 and A5",
+      "layers": [
+        {"wave": "pulse", "width": 0.3, "freq": "D4", "dur": 0.2, "attack": 0.02, "release": 0.08, "lowpass": 1400, "tremolo": {"rate": 22, "depth": 0.5}, "voices": 2, "detune": 10, "gain": -6},
+        {"notes": ["D5", "A5"], "step": 0.11, "at": 0.3, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.03, "harmonics": [1, 0.25, 0.08]}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-probe": {
+      "about": "the probe returns: two small bubbles and then one blip on D5",
+      "layers": [
+        {"freq": "F4", "freq_end": "F5", "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -6},
+        {"freq": "A4", "freq_end": "A5", "at": 0.09, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -6},
+        {"freq": "D5", "harmonics": [1, 0.25, 0.08], "at": 0.2, "dur": 0.14, "attack": 0.004, "decay": 0.136, "sustain": 0, "release": 0.03},
+        {"freq": "D6", "at": 0.2, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.03, "gain": -9}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-chart": {
+      "about": "three pings climbing the D minor triad, D5 F5 A5, the last echoing once",
+      "layers": [
+        {"notes": ["D5", "F5", "A5"], "step": 0.22, "dur": 0.4, "attack": 0.004, "decay": 0.396, "sustain": 0, "release": 0.03, "harmonics": [1, 0.2, 0.06]},
+        {"freq": "A5", "at": 0.84, "dur": 0.35, "attack": 0.01, "decay": 0.34, "sustain": 0, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ok-surface": {
+      "about": "surfacing: a six-note run up D minor from D4 to D6, then a full D chord ping with one echo",
+      "layers": [
+        {"wave": "triangle", "notes": ["D4", "A4", "D5", "F5", "A5", "D6"], "step": 0.08, "dur": 0.07, "attack": 0.004, "decay": 0.066, "sustain": 0, "release": 0.02, "lowpass": 2400},
+        {"freq": "D5", "harmonics": [1, 0.2, 0.06], "at": 0.5, "dur": 0.45, "attack": 0.004, "decay": 0.446, "sustain": 0, "release": 0.03},
+        {"freq": "A5", "at": 0.5, "dur": 0.45, "attack": 0.004, "decay": 0.446, "sustain": 0, "release": 0.03, "gain": -5},
+        {"freq": "D4", "at": 0.5, "dur": 0.45, "attack": 0.004, "decay": 0.446, "sustain": 0, "release": 0.03, "gain": -6},
+        {"freq": "D5", "at": 0.9, "dur": 0.35, "attack": 0.01, "decay": 0.34, "sustain": 0, "release": 0.03, "gain": -12},
+        {"freq": "A5", "at": 0.9, "dur": 0.35, "attack": 0.01, "decay": 0.34, "sustain": 0, "release": 0.03, "gain": -17}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+
+    "err-flat": {
+      "about": "one rough sustained tone that starts on A4 and sags flat to Ab4",
+      "layers": [
+        {"freq": "A4", "freq_end": "Ab4", "harmonics": [1, 0.4, 0.2], "dur": 0.22, "attack": 0.006, "release": 0.06, "lowpass": 2000, "lowpass_end": 500},
+        {"freq": "Ab4", "freq_end": "G4", "dur": 0.22, "attack": 0.006, "release": 0.06, "gain": -11},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 700, "lowpass": 2200, "gain": -14}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2500}]
+    },
+    "err-hatch": {
+      "about": "two low thuds, D4 then a semitone flat on Db4: the hatch did not seat",
+      "layers": [
+        {"notes": ["D4", "Db4"], "step": 0.13, "dur": 0.1, "attack": 0.003, "decay": 0.097, "sustain": 0, "release": 0.02, "harmonics": [1, 0.4, 0.15], "voices": 2, "detune": 14},
+        {"wave": "noise", "notes": ["D4", "Db4"], "step": 0.13, "dur": 0.012, "attack": 0.002, "release": 0.008, "lowpass": 900, "gain": -8}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2200}]
+    },
+    "err-bubble": {
+      "about": "one small bubble sinking: a quick downward glide from A5 to A4",
+      "layers": [
+        {"freq": "A5", "freq_end": "A4", "dur": 0.08, "attack": 0.005, "release": 0.03},
+        {"freq": "A4", "freq_end": "A3", "dur": 0.08, "attack": 0.005, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3000}]
+    },
+    "err-ticks": {
+      "about": "two gauge ticks on F4 then a longer dull tone sliding down from F4 to Db4",
+      "layers": [
+        {"notes": ["F4", "F4"], "step": 0.09, "dur": 0.035, "attack": 0.002, "decay": 0.033, "sustain": 0, "release": 0.01, "harmonics": [1, 0.3]},
+        {"wave": "noise", "notes": ["F4", "F4"], "step": 0.09, "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -10},
+        {"wave": "triangle", "freq": "F4", "freq_end": "Db4", "at": 0.2, "dur": 0.16, "attack": 0.005, "release": 0.04, "voices": 2, "detune": 20, "lowpass": 800, "gain": -2}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2500}]
+    },
+    "err-no-reply": {
+      "about": "a G4 hail blip whose echo comes back a semitone flat and muffled",
+      "layers": [
+        {"freq": "G4", "harmonics": [1, 0.3, 0.1], "dur": 0.08, "attack": 0.004, "decay": 0.076, "sustain": 0, "release": 0.02},
+        {"freq": "Gb4", "freq_end": "F4", "harmonics": [1, 0.3, 0.1], "at": 0.2, "dur": 0.2, "attack": 0.01, "decay": 0.19, "sustain": 0, "release": 0.03, "voices": 2, "detune": 16, "lowpass": 900, "gain": -3}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2500}]
+    },
+    "err-probe-lost": {
+      "about": "the probe is lost: one long wavering tone sinking from A4 to Eb4, with two small sinking bubbles heard inside it",
+      "layers": [
+        {"freq": "A4", "freq_end": "Eb4", "harmonics": [1, 0.3, 0.1], "dur": 0.5, "attack": 0.01, "release": 0.12, "vibrato": {"rate": 7, "depth": 0.4}, "voices": 2, "detune": 14},
+        {"freq": "A5", "freq_end": "A4", "at": 0.25, "dur": 0.06, "attack": 0.005, "release": 0.02, "gain": -4},
+        {"freq": "F5", "freq_end": "F4", "at": 0.42, "dur": 0.06, "attack": 0.005, "release": 0.02, "gain": -6}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2500}]
+    },
+    "err-timeout": {
+      "about": "a ping running out: four blips D5 C5 A4 F4 falling and spacing out, then a low tone sagging away",
+      "layers": [
+        {"freq": "D5", "harmonics": [1, 0.25, 0.08], "at": 0, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.02},
+        {"freq": "C5", "harmonics": [1, 0.25, 0.08], "at": 0.18, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.02, "gain": -2},
+        {"freq": "A4", "harmonics": [1, 0.25, 0.08], "at": 0.45, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.02, "gain": -4},
+        {"freq": "F4", "harmonics": [1, 0.25, 0.08], "at": 0.85, "dur": 0.1, "attack": 0.004, "decay": 0.096, "sustain": 0, "release": 0.02, "gain": -6},
+        {"freq": "Eb4", "freq_end": "A3", "harmonics": [1, 0.4, 0.15], "at": 1.3, "dur": 0.3, "attack": 0.02, "release": 0.1, "voices": 2, "detune": 14, "gain": -4}
+      ],
+      "effects": [{"type": "lowpass", "freq": 2500}]
+    },
+    "err-cut": {
+      "about": "a steady A4 tone chopped off short, closed by one dry tick",
+      "layers": [
+        {"freq": "A4", "harmonics": [1, 0.25, 0.08], "dur": 0.12, "attack": 0.005, "release": 0.004},
+        {"freq": "D4", "at": 0.17, "dur": 0.03, "attack": 0.002, "decay": 0.028, "sustain": 0, "release": 0.01, "gain": -3},
+        {"wave": "noise", "at": 0.17, "dur": 0.008, "attack": 0.002, "release": 0.006, "lowpass": 1500, "gain": -8}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3000}]
+    },
+    "err-klaxon": {
+      "about": "the dive klaxon: two rough whoops each swooping up from D4 to A4",
+      "layers": [
+        {"wave": "saw", "freq": "D4", "freq_end": "A4", "dur": 0.4, "attack": 0.02, "release": 0.08, "voices": 2, "detune": 12, "lowpass": 1800},
+        {"wave": "square", "freq": "D3", "freq_end": "A3", "dur": 0.4, "attack": 0.02, "release": 0.08, "lowpass": 900, "gain": -18},
+        {"wave": "saw", "freq": "D4", "freq_end": "A4", "at": 0.55, "dur": 0.4, "attack": 0.02, "release": 0.08, "voices": 2, "detune": 12, "lowpass": 1800},
+        {"wave": "square", "freq": "D3", "freq_end": "A3", "at": 0.55, "dur": 0.4, "attack": 0.02, "release": 0.08, "lowpass": 900, "gain": -18}
+      ],
+      "effects": [{"type": "drive", "amount": 0.3}, {"type": "lowpass", "freq": 2200}]
+    },
+
+    "msg-away": {
+      "about": "a message leaving: two rising bubbles and then a soft A5 blip with one echo",
+      "layers": [
+        {"freq": "A4", "freq_end": "A5", "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -4},
+        {"freq": "C5", "freq_end": "C6", "at": 0.08, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -4},
+        {"freq": "A5", "harmonics": [1, 0.2, 0.06], "at": 0.18, "dur": 0.16, "attack": 0.004, "decay": 0.156, "sustain": 0, "release": 0.03},
+        {"freq": "A5", "at": 0.4, "dur": 0.14, "attack": 0.01, "decay": 0.13, "sustain": 0, "release": 0.03, "gain": -13}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "ping-attention": {
+      "about": "two full sonar pings, A5 then up to D6, each trailing darker echoes",
+      "layers": [
+        {"freq": "A5", "harmonics": [1, 0.2, 0.06], "dur": 0.6, "attack": 0.004, "decay": 0.596, "sustain": 0, "release": 0.03},
+        {"freq": "A4", "dur": 0.4, "attack": 0.004, "decay": 0.396, "sustain": 0, "release": 0.03, "gain": -10},
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -16},
+        {"freq": "A5", "at": 0.4, "dur": 0.4, "attack": 0.01, "decay": 0.39, "sustain": 0, "release": 0.03, "gain": -13},
+        {"freq": "D6", "harmonics": [1, 0.15], "at": 0.7, "dur": 0.7, "attack": 0.004, "decay": 0.696, "sustain": 0, "release": 0.03},
+        {"freq": "D5", "at": 0.7, "dur": 0.5, "attack": 0.004, "decay": 0.496, "sustain": 0, "release": 0.03, "gain": -8},
+        {"wave": "noise", "at": 0.7, "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -16},
+        {"freq": "D6", "at": 1.1, "dur": 0.5, "attack": 0.01, "decay": 0.49, "sustain": 0, "release": 0.03, "gain": -11},
+        {"freq": "D6", "at": 1.5, "dur": 0.35, "attack": 0.015, "decay": 0.335, "sustain": 0, "release": 0.03, "gain": -20}
+      ],
+      "effects": [{"type": "reverb", "size": 0.4, "damp": 0.7, "mix": 0.12}, {"type": "lowpass", "freq": 3500}]
+    },
+    "ping-query": {
+      "about": "a question: three pings stepping up D5 F5 G5, stopping on the unresolved fourth, which echoes once",
+      "layers": [
+        {"notes": ["D5", "F5"], "step": 0.16, "dur": 0.14, "attack": 0.004, "decay": 0.136, "sustain": 0, "release": 0.03, "harmonics": [1, 0.2, 0.06]},
+        {"freq": "G5", "freq_end": 800, "harmonics": [1, 0.2, 0.06], "at": 0.32, "dur": 0.5, "attack": 0.004, "decay": 0.496, "sustain": 0, "release": 0.03},
+        {"freq": 800, "at": 0.75, "dur": 0.4, "attack": 0.01, "decay": 0.39, "sustain": 0, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "reverb", "size": 0.3, "damp": 0.7, "mix": 0.1}, {"type": "lowpass", "freq": 3500}]
+    },
+
+    "ping-home": {
+      "about": "the signature: an A4 grace blip into one deep sonar ping on D5, followed by three darker, fading echoes",
+      "layers": [
+        {"freq": "A4", "harmonics": [1, 0.25, 0.08], "dur": 0.09, "attack": 0.004, "decay": 0.086, "sustain": 0, "release": 0.02, "gain": -7},
+        {"wave": "noise", "at": 0.1, "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -16},
+        {"freq": "D5", "harmonics": [1, 0.3, 0.1], "at": 0.1, "dur": 0.8, "attack": 0.004, "decay": 0.796, "sustain": 0, "release": 0.03},
+        {"freq": "D4", "at": 0.1, "dur": 0.6, "attack": 0.004, "decay": 0.596, "sustain": 0, "release": 0.03, "gain": -9},
+        {"freq": "D6", "at": 0.1, "dur": 0.3, "attack": 0.004, "decay": 0.296, "sustain": 0, "release": 0.03, "gain": -15},
+        {"freq": "D5", "harmonics": [1, 0.1], "at": 0.55, "dur": 0.6, "attack": 0.012, "decay": 0.588, "sustain": 0, "release": 0.03, "gain": -11},
+        {"freq": "D5", "at": 1.0, "dur": 0.55, "attack": 0.02, "decay": 0.53, "sustain": 0, "release": 0.03, "gain": -18},
+        {"freq": "D5", "at": 1.45, "dur": 0.5, "attack": 0.03, "decay": 0.47, "sustain": 0, "release": 0.03, "gain": -25}
+      ],
+      "effects": [{"type": "reverb", "size": 0.4, "damp": 0.7, "mix": 0.12}, {"type": "lowpass", "freq": 3500}]
+    },
+    "ping-small": {
+      "about": "a smaller relative of the signature: one shorter D5 ping with a single darker echo",
+      "layers": [
+        {"wave": "noise", "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -16},
+        {"freq": "D5", "harmonics": [1, 0.3, 0.1], "dur": 0.4, "attack": 0.004, "decay": 0.396, "sustain": 0, "release": 0.03},
+        {"freq": "D6", "dur": 0.15, "attack": 0.004, "decay": 0.146, "sustain": 0, "release": 0.03, "gain": -15},
+        {"freq": "D5", "at": 0.38, "dur": 0.4, "attack": 0.012, "decay": 0.388, "sustain": 0, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+
+    "sys-dive": {
+      "about": "the boat wakes: a hydrophone wash and a low hull creak, then three sonar pings rising A4 D5 A5, each with darker echoes",
+      "layers": [
+        {"wave": "noise", "dur": 1.6, "attack": 0.7, "release": 1.0, "lowpass": 500, "lowpass_end": 1400, "highpass": 200, "gain": -12},
+        {"wave": "saw", "freq": "A3", "freq_end": "G3", "at": 0.15, "dur": 0.6, "attack": 0.2, "release": 0.3, "voices": 3, "detune": 25, "lowpass": 700, "gain": -12},
+        {"freq": "A4", "freq_end": "A5", "at": 0.45, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -16},
+        {"freq": "C5", "freq_end": "C6", "at": 0.62, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -18},
+        {"freq": "A4", "harmonics": [1, 0.3, 0.1], "at": 0.9, "dur": 0.6, "attack": 0.004, "decay": 0.596, "sustain": 0, "release": 0.03, "gain": -3},
+        {"freq": "A4", "at": 1.3, "dur": 0.4, "attack": 0.012, "decay": 0.388, "sustain": 0, "release": 0.03, "gain": -15},
+        {"freq": "D5", "harmonics": [1, 0.3, 0.1], "at": 1.5, "dur": 0.6, "attack": 0.004, "decay": 0.596, "sustain": 0, "release": 0.03, "gain": -2},
+        {"freq": "D5", "at": 1.9, "dur": 0.4, "attack": 0.012, "decay": 0.388, "sustain": 0, "release": 0.03, "gain": -14},
+        {"freq": "A5", "harmonics": [1, 0.2, 0.06], "at": 2.1, "dur": 0.8, "attack": 0.004, "decay": 0.796, "sustain": 0, "release": 0.03},
+        {"freq": "D4", "at": 2.1, "dur": 0.7, "attack": 0.004, "decay": 0.696, "sustain": 0, "release": 0.03, "gain": -8},
+        {"freq": "A5", "at": 2.55, "dur": 0.6, "attack": 0.012, "decay": 0.588, "sustain": 0, "release": 0.03, "gain": -11},
+        {"freq": "A5", "at": 3.0, "dur": 0.55, "attack": 0.02, "decay": 0.53, "sustain": 0, "release": 0.03, "gain": -18}
+      ],
+      "effects": [{"type": "reverb", "size": 0.5, "damp": 0.7, "mix": 0.15}, {"type": "lowpass", "freq": 3500}]
+    },
+    "sys-pressure": {
+      "about": "going deep: six blips stepping down from D5 to D4 over a sinking hull creak and a wash that closes to a dull rumble",
+      "layers": [
+        {"notes": ["D5", "C5", "A4", "G4", "F4", "D4"], "step": 0.24, "dur": 0.14, "attack": 0.004, "decay": 0.136, "sustain": 0, "release": 0.03, "harmonics": [1, 0.25, 0.08]},
+        {"wave": "saw", "freq": "A3", "freq_end": "D3", "dur": 1.6, "attack": 0.3, "release": 0.4, "voices": 3, "detune": 30, "lowpass": 700, "lowpass_end": 300, "gain": -18},
+        {"wave": "noise", "dur": 1.6, "attack": 0.2, "release": 0.5, "lowpass": 1600, "lowpass_end": 250, "highpass": 150, "gain": -18}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3000}]
+    },
+    "sys-surface": {
+      "about": "coming back up: a wash opening from dull to bright with four rising bubbles, then one D5 ping with an echo",
+      "layers": [
+        {"wave": "noise", "dur": 0.5, "attack": 0.15, "release": 0.2, "lowpass": 300, "lowpass_end": 2000, "highpass": 150, "gain": -9},
+        {"freq": "D4", "freq_end": "D5", "at": 0.05, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -8},
+        {"freq": "F4", "freq_end": "F5", "at": 0.17, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -8},
+        {"freq": "A4", "freq_end": "A5", "at": 0.29, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -8},
+        {"freq": "C5", "freq_end": "C6", "at": 0.41, "dur": 0.04, "attack": 0.004, "release": 0.02, "gain": -8},
+        {"freq": "D5", "harmonics": [1, 0.3, 0.1], "at": 0.6, "dur": 0.5, "attack": 0.004, "decay": 0.496, "sustain": 0, "release": 0.03},
+        {"freq": "A5", "at": 0.6, "dur": 0.3, "attack": 0.004, "decay": 0.296, "sustain": 0, "release": 0.03, "gain": -10},
+        {"freq": "D5", "at": 1.0, "dur": 0.45, "attack": 0.012, "decay": 0.438, "sustain": 0, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    },
+    "sys-gauge": {
+      "about": "two depth-gauge ticks and then a soft low ping on D4 with one echo",
+      "layers": [
+        {"notes": ["C5", "C5"], "step": 0.1, "dur": 0.03, "attack": 0.002, "decay": 0.028, "sustain": 0, "release": 0.01, "gain": -3},
+        {"wave": "noise", "notes": ["C5", "C5"], "step": 0.1, "dur": 0.006, "attack": 0.002, "release": 0.004, "highpass": 900, "lowpass": 2600, "gain": -12},
+        {"freq": "D4", "harmonics": [1, 0.4, 0.15], "at": 0.22, "dur": 0.4, "attack": 0.004, "decay": 0.396, "sustain": 0, "release": 0.03},
+        {"freq": "D4", "at": 0.6, "dur": 0.35, "attack": 0.012, "decay": 0.338, "sustain": 0, "release": 0.03, "gain": -12}
+      ],
+      "effects": [{"type": "lowpass", "freq": 3500}]
+    }
+  },
+  "mappings": {
+    "default.wav": "gauge-tick",
+    "success/success.wav": "gauge-tick",
+    "success/complete.wav": "gauge-tick",
+    "success/tool-batch.wav": "gauge-tick",
+
+    "loading/loading.wav": "load-blip",
+    "loading/tool-start.wav": "load-blip",
+    "loading/processing.wav": "load-blip",
+    "loading/bash-start.wav": "load-hatch",
+    "loading/powershell-start.wav": "load-hatch",
+    "loading/echo-start.wav": "load-hatch",
+    "loading/read-start.wav": "load-bubble",
+    "loading/get-content-start.wav": "load-bubble",
+    "loading/file-reading.wav": "load-bubble",
+    "loading/ls-start.wav": "load-bubble",
+    "loading/cd-start.wav": "load-bubble",
+    "loading/glob-start.wav": "load-bubble",
+    "loading/grep-start.wav": "load-sweep",
+    "loading/rg-start.wav": "load-sweep",
+    "loading/websearch-start.wav": "load-sweep",
+    "loading/edit-start.wav": "load-ticks",
+    "loading/multiedit-start.wav": "load-ticks",
+    "loading/write-start.wav": "load-ticks",
+    "loading/apply-patch-start.wav": "load-ticks",
+    "loading/file-editing.wav": "load-ticks",
+    "loading/todowrite-start.wav": "load-ticks",
+    "loading/git-start.wav": "load-contact",
+    "loading/git-status-start.wav": "load-contact",
+    "loading/git-diff-start.wav": "load-contact",
+    "loading/git-log-start.wav": "load-contact",
+    "loading/git-add-start.wav": "load-contact",
+    "loading/git-commit-start.wav": "load-commit",
+    "loading/git-push-start.wav": "load-ping-out",
+    "loading/git-pull-start.wav": "load-ping-out",
+    "loading/webfetch-start.wav": "load-hail",
+    "loading/connect.wav": "load-hail",
+    "loading/gh-start.wav": "load-hail",
+    "loading/mcp-start.wav": "load-hail",
+    "loading/go-build-start.wav": "load-turbine",
+    "loading/uv-start.wav": "load-turbine",
+    "loading/task-start.wav": "load-probe",
+    "loading/agent-start.wav": "load-probe",
+    "loading/subagent-start.wav": "load-probe",
+    "loading/exitplanmode-start.wav": "load-chart",
+
+    "success/tool-complete.wav": "ok-blip",
+    "success/bash-success.wav": "ok-hatch",
+    "success/powershell-success.wav": "ok-hatch",
+    "success/echo-success.wav": "ok-hatch",
+    "success/e2e-test-bat-success.wav": "ok-hatch",
+    "success/e2e-test-bat-tee-success.wav": "ok-hatch",
+    "success/read-success.wav": "ok-bubbles",
+    "success/get-content-success.wav": "ok-bubbles",
+    "success/file-read.wav": "ok-bubbles",
+    "success/ls-success.wav": "ok-bubbles",
+    "success/cd-success.wav": "ok-bubbles",
+    "success/glob-success.wav": "ok-bubbles",
+    "success/tail-success.wav": "ok-bubbles",
+    "success/grep-success.wav": "ok-lock",
+    "success/rg-success.wav": "ok-lock",
+    "success/grep-head-success.wav": "ok-lock",
+    "success/find-success.wav": "ok-lock",
+    "success/find-f-success.wav": "ok-lock",
+    "success/websearch-success.wav": "ok-lock",
+    "success/edit-success.wav": "ok-logged",
+    "success/multiedit-success.wav": "ok-logged",
+    "success/write-success.wav": "ok-logged",
+    "success/apply-patch-success.wav": "ok-logged",
+    "success/file-saved.wav": "ok-logged",
+    "success/todowrite-success.wav": "ok-logged",
+    "success/git-success.wav": "ok-contact",
+    "success/git-status-success.wav": "ok-contact",
+    "success/git-diff-success.wav": "ok-contact",
+    "success/git-log-success.wav": "ok-contact",
+    "success/git-add-success.wav": "ok-contact",
+    "success/git-commit-success.wav": "ok-commit",
+    "success/git-push-success.wav": "ok-ping-back",
+    "success/git-pull-success.wav": "ok-ping-back",
+    "success/webfetch-success.wav": "ok-hail",
+    "success/gh-success.wav": "ok-hail",
+    "success/gh-repo-success.wav": "ok-hail",
+    "success/mcp-success.wav": "ok-hail",
+    "success/go-build-success.wav": "ok-turbine",
+    "success/uv-success.wav": "ok-turbine",
+    "success/uv-run-success.wav": "ok-turbine",
+    "success/npm-success.wav": "ok-turbine",
+    "success/task-success.wav": "ok-probe",
+    "success/agent-success.wav": "ok-probe",
+    "success/exitplanmode-success.wav": "ok-chart",
+    "success/celebration.wav": "ok-surface",
+
+    "error/error.wav": "err-flat",
+    "error/failure.wav": "err-flat",
+    "error/tool-error.wav": "err-flat",
+    "error/bash-error.wav": "err-hatch",
+    "error/powershell-error.wav": "err-hatch",
+    "error/read-error.wav": "err-bubble",
+    "error/ls-error.wav": "err-bubble",
+    "error/glob-error.wav": "err-bubble",
+    "error/grep-error.wav": "err-bubble",
+    "error/rg-error.wav": "err-bubble",
+    "error/edit-error.wav": "err-ticks",
+    "error/multiedit-error.wav": "err-ticks",
+    "error/write-error.wav": "err-ticks",
+    "error/apply-patch-error.wav": "err-ticks",
+    "error/todowrite-error.wav": "err-ticks",
+    "error/webfetch-error.wav": "err-no-reply",
+    "error/websearch-error.wav": "err-no-reply",
+    "error/mcp-error.wav": "err-no-reply",
+    "error/task-error.wav": "err-probe-lost",
+    "error/agent-error.wav": "err-probe-lost",
+    "error/timeout.wav": "err-timeout",
+    "error/tool-interrupted.wav": "err-cut",
+    "error/critical.wav": "err-klaxon",
+
+    "interactive/message-sent.wav": "msg-away",
+    "interactive/prompt-submit.wav": "msg-away",
+    "interactive/interactive.wav": "msg-away",
+    "interactive/notification.wav": "ping-attention",
+    "interactive/notify.wav": "ping-attention",
+    "interactive/chimes.wav": "ping-attention",
+    "interactive/permission-request.wav": "ping-query",
+    "interactive/notification-permission.wav": "ping-query",
+
+    "completion/agent-complete.wav": "ping-home",
+    "completion/completion.wav": "ping-home",
+    "completion/stop.wav": "ping-home",
+    "interactive/stop.wav": "ping-home",
+    "completion/subagent-complete.wav": "ping-small",
+    "completion/subagent-stop.wav": "ping-small",
+    "interactive/subagent-stop.wav": "ping-small",
+
+    "system/session-start.wav": "sys-dive",
+    "system/compacting.wav": "sys-pressure",
+    "system/pre-compact.wav": "sys-pressure",
+    "system/post-compact.wav": "sys-surface",
+    "interactive/compact.wav": "sys-surface",
+    "system/system.wav": "sys-gauge"
+  }
+}
