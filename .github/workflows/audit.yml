@@ -17,10 +17,11 @@ jobs:
         with:
           go-version: stable
 
-      # Pinned to the commit that added `soundpack audit` and `soundpack
-      # master` (ctoth/claudio#98). Move to a release tag once one has them.
+      # Pinned to the commit of ctoth/claudio#99 that has soundpack synth
+      # (with sample layers), master (with peak limiting) and audit. Move to
+      # a release tag once one has them.
       - name: Install claudio
-        run: go install claudio.click/cmd/claudio@762b28c222aab0ae0b5144e7786290f2e77652c2
+        run: go install claudio.click/cmd/claudio@743cd0c03f0d6c76cd8f0da046176894ba26cdbb
 
       - name: Validate mappings
         run: claudio soundpack validate soundpack.json
@@ -28,9 +29,23 @@ jobs:
       - name: Audit sounds
         run: claudio soundpack audit soundpack.json --strict
 
-      # The published pack must be exactly what the source builds.
-      - name: Rebuild from source
+      # Every recording under source/raw must say where it came from.
+      - name: Check provenance
         run: |
-          rm -rf sounds soundpack.json
+          missing=0
+          while IFS= read -r file; do
+            rel="${file#source/}"
+            if ! grep -qF "\"$rel\"" source/sources.json; then
+              echo "no entry in source/sources.json for $rel"
+              missing=1
+            fi
+          done < <(find source/raw -type f | sort)
+          exit $missing
+
+      # The published pack must be exactly what the recipe builds.
+      - name: Rebuild from the recipe
+        run: |
+          rm -rf sounds soundpack.json source/synth source/soundpack.json
+          claudio soundpack synth source/recipe.json --out source
           claudio soundpack master source/soundpack.json --out .
-          git diff --exit-code -- soundpack.json sounds
+          git diff --exit-code -- soundpack.json sounds source/synth source/soundpack.json
